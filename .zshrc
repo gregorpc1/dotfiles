@@ -179,3 +179,4 @@ cutvideo() {
     ffmpeg -ss "$start" -to "$end" -i "$input" -c copy "${input%.*}_cut.mp4"
 }
 
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
