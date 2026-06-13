@@ -1,0 +1,54 @@
+#!/bin/bash
+
+echo "=== Przywracanie środowiska z dotfiles ==="
+
+REPO="$HOME/dotfiles"
+
+### ZSH + P10K ###
+echo "[1/8] Przywracanie Zsh i Powerlevel10k..."
+cp "$REPO/.zshrc" "$HOME/.zshrc" 2>/dev/null
+cp "$REPO/.p10k.zsh" "$HOME/.p10k.zsh" 2>/dev/null
+
+mkdir -p ~/.zsh
+rsync -av --delete "$REPO/zsh/" ~/.zsh/
+
+
+### COPYQ ###
+echo "[2/8] Przywracanie CopyQ..."
+mkdir -p ~/.config/copyq
+rsync -av --delete "$REPO/config/copyq/" ~/.config/copyq/
+
+
+### CINNAMON ###
+echo "[3/8] Przywracanie Cinnamon..."
+mkdir -p ~/.config/cinnamon
+rsync -av --delete "$REPO/config/cinnamon/" ~/.config/cinnamon/
+
+
+### BTOP ###
+echo "[4/8] Przywracanie btop..."
+mkdir -p ~/.config/btop
+rsync -av --delete "$REPO/config/btop/" ~/.config/btop/
+
+
+### THEMES + ICONS ###
+echo "[5/8] Przywracanie motywów i ikon..."
+mkdir -p ~/.themes ~/.icons
+rsync -av --delete "$REPO/themes/" ~/.themes/
+rsync -av --delete "$REPO/icons/" ~/.icons/
+
+
+### VIM ###
+echo "[6/8] Przywracanie Vim..."
+cp "$REPO/.vimrc" "$HOME/.vimrc" 2>/dev/null
+mkdir -p ~/.vim
+rsync -av --delete "$REPO/vim/" ~/.vim/ 2>/dev/null
+
+
+### PACKAGES ###
+echo "[7/8] Kopiowanie listy pakietów..."
+cp "$REPO/packages.txt" "$HOME/packages.txt"
+
+
+echo "=== Przywracanie zakończone ==="
+echo "Możesz teraz wykonać: exec zsh"
