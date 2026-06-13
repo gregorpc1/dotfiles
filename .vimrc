@@ -1,0 +1,12 @@
+set number
+syntax on
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set autoindent
+set smartindent
+set nowrap
+set hlsearch
+set incsearch
+set mouse=a
+set clipboard=unnamedplus
